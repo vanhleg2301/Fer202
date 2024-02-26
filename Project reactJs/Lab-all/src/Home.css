@@ -1,0 +1,6 @@
+.number-limit {
+    max-width: 100px; /* Thay đổi giá trị này thành chiều dài tối đa mong muốn */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

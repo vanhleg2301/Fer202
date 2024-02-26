@@ -6,9 +6,9 @@ const port = "3000";
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader("content-Type", "text/plain");
-  res.end("hello FPT /n");
+  res.end("hello FPT");
 });
 
 server.listen(port, hostname, () => {
-  console.log("Server running at (http://${hostname}:${port}");
+  console.log(`Server running at http://${hostname}:${port}`);
 });

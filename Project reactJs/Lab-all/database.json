@@ -1,0 +1,122 @@
+
+{
+
+  "banner": [{
+    "src": "https://via.placeholder.com/800x400",
+    "alt": "First Pizza",
+    "caption": "Nepolitan Pizza",
+    "description":
+      "If you are looking for traditional Italian pizza, the Nepolitian is the best option!"
+  },
+  {
+    "src": "https://via.placeholder.com/800x400",
+    "alt": "Second slide",
+    "caption": "Second Pizza",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  {
+    "src": "https://via.placeholder.com/800x400",
+    "alt": "Third slide",
+    "caption": "Third Pizza",
+    "description":
+      "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+  },
+  {
+    "src": "https://via.placeholder.com/800x400",
+    "alt": "Third slide",
+    "caption": "Third Pizza",
+    "description":
+      "Praesent commodo cursus magna, vel scelerisque nisl consectetur."
+  }
+],
+  "products": [
+    {
+      "id": "1",
+      "name": "Áo thun trắng ",
+      "price": 1000000000000,
+      "description": "Áo thun cotton trắng dễ phối đồ",
+      "imageUrl": "https://example.com/ao-thun-trang.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Quần jean nam nữ",
+      "price": 250000,
+      "description": "Quần jean nam phong cách thời trang",
+      "imageUrl": "https://example.com/quan-jean-nam.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Đầm dự tiệc đẹp vcl",
+      "price": 450000,
+      "description": "Đầm dự tiệc sang trọng cho các dịp đặc biệt",
+      "imageUrl": "https://example.com/dam-du-tiec.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Giày thể thao nữ",
+      "price": 180000,
+      "description": "Giày thể thao nữ nhẹ nhàng và thoải mái",
+      "imageUrl": "https://example.com/giay-the-thao-nu.jpg"
+    }
+  ], 
+  "products_2": [
+    {
+      "id": "1",
+      "name": "iphone 1",
+      "price": 100000,
+      "description": "good",
+      "imageUrl": "https://example.com/ao-thun-trang.jpg"
+    },
+    {
+      "id": "2",
+      "name": "iphone 2",
+      "price": 250000,
+      "description": "nice",
+      "imageUrl": "https://example.com/quan-jean-nam.jpg"
+    },
+    {
+      "id": "3",
+      "name": "iphone4",
+      "price": 450000,
+      "description": "Vailoz",
+      "imageUrl": "https://example.com/dam-du-tiec.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Iphone 5",
+      "price": 180000,
+      "description": "Tạm",
+      "imageUrl": "https://example.com/giay-the-thao-nu.jpg"
+    }
+  ], 
+  "products_3": [
+    {
+      "id": "1",
+      "name": "Mac 1",
+      "price": 100000,
+      "description": "good",
+      "imageUrl": "https://example.com/ao-thun-trang.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Mac 2",
+      "price": 250000,
+      "description": "nice",
+      "imageUrl": "https://example.com/quan-jean-nam.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Mac 3",
+      "price": 450000,
+      "description": "Vailoz",
+      "imageUrl": "https://example.com/dam-du-tiec.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Mac 4",
+      "price": 180000,
+      "description": "Tạm",
+      "imageUrl": "https://example.com/giay-the-thao-nu.jpg"
+    }
+  ]
+}
