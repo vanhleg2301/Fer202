@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/header";
-import { Container, Row, Col, Table, Form } from "react-bootstrap";
+import { Row, Col, Table, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Movie = () => {
   const [movies, setMovies] = useState([]);
@@ -12,8 +13,10 @@ const Movie = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.Title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredMovies = movies.filter(
+    (movie) =>
+      movie.Title &&
+      movie.Title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   useEffect(() => {
@@ -62,21 +65,46 @@ const Movie = () => {
     }
   };
 
+  const handlehandleEdit = () => {
+    alert("Edit me");
+  };
+
+  const handleDelete = () => {
+    alert("Delete me");
+  };
+
   return (
     <div>
       <Header />
       <div className="m-4">
         <h1 className="text-center">Movies Management</h1>
-        <div className="d-flex justify-content-center m-4">
-          <Form.Group controlId="formSearch" className="w-100">
-            <Form.Control
-              type="text"
-              placeholder="Search by Title"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-          </Form.Group>
-        </div>
+        <Row>
+          <Col md={6}>
+            <div className="d-flex justify-content-center m-4">
+              <Form.Group controlId="formSearch" className="w-100">
+                <Form.Control
+                  type="text"
+                  placeholder="Search by Title"
+                  value={searchTerm}
+                  onChange={handleSearch}
+                />
+              </Form.Group>
+            </div>
+          </Col>
+          <Col md={6}>
+            <div className="d-flex justify-content-center m-4">
+              <Button>
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to="/movie/add"
+                >
+                  Create new Movie
+                </Link>
+              </Button>
+            </div>
+          </Col>
+        </Row>
+
         <Row>
           <Col lg={2} xl={2}>
             <h3>Producers</h3>
@@ -105,6 +133,9 @@ const Movie = () => {
                   <th>Language</th>
                   <th>Producer ID</th>
                   <th>Director ID</th>
+                  <th>Detail</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -118,6 +149,24 @@ const Movie = () => {
                         <td>{movie.Language}</td>
                         <td>{movie.ProducerId}</td>
                         <td>{movie.DirectorId}</td>
+                        <td>
+                          <Button>
+                            <Link
+                              style={{ color: "white", textDecoration: "none" }}
+                              to={`/movie/${movie.id}`}
+                            >
+                              View Details
+                            </Link>
+                          </Button>
+                        </td>
+                        <td>
+                          <Button onClick={handlehandleEdit}>Edit</Button>
+                        </td>
+                        <td>
+                          <Button variant="danger" onClick={handleDelete}>
+                            Delete
+                          </Button>
+                        </td>
                       </tr>
                     ))
                   : filteredMovies.map((movie) => (
@@ -129,6 +178,24 @@ const Movie = () => {
                         <td>{movie.Language}</td>
                         <td>{movie.ProducerId}</td>
                         <td>{movie.DirectorId}</td>
+                        <td>
+                          <Button>
+                            <Link
+                              style={{ color: "white", textDecoration: "none" }}
+                              to={`/movie/${movie.id}`}
+                            >
+                              View Details
+                            </Link>
+                          </Button>
+                        </td>
+                        <td>
+                          <Button onClick={handlehandleEdit}>Edit</Button>
+                        </td>
+                        <td>
+                          <Button variant="danger" onClick={handleDelete}>
+                            Delete
+                          </Button>
+                        </td>
                       </tr>
                     ))}
               </tbody>
