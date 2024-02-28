@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header/header";
 import { Row, Col, Table, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import BackToTop from "../BackToTop/BackToTop";
 
 const Movie = () => {
   const [movies, setMovies] = useState([]);
@@ -116,20 +117,22 @@ const Movie = () => {
         <Row>
           <Col lg={2} xl={2}>
             <h3>Producers</h3>
-            <ul>
-              {producers.map((producer) => (
-                <li key={producer.id}>
-                  <a
-                    href={`?producer-id=${producer.id}`}
-                    style={{ textDecoration: "none" }}
-                    onClick={() => handleProducerSearch(producer.id)}
-                  >
+            <Form.Group>
+              <Form.Control
+                as="select"
+                onChange={(e) => handleProducerSearch(e.target.value)}
+              >
+                <option value="">Select Producer</option>
+
+                {producers.map((producer) => (
+                  <option key={producer.id} value={producer.id}>
                     {producer.Name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+                  </option>
+                ))}
+              </Form.Control>
+            </Form.Group>
           </Col>
+
           <Col lg={10} xl={10}>
             <Table striped bordered hover>
               <thead>
@@ -210,6 +213,7 @@ const Movie = () => {
             </Table>
           </Col>
         </Row>
+        <BackToTop />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 
 const Producers = () => {
   const [producers, setProducers] = useState([]);
@@ -40,19 +40,19 @@ const Producers = () => {
   return (
     <Col lg={2} xl={2}>
       <h3>Producers</h3>
-      <ul>
-        {producers.map((producer) => (
-          <li key={producer.id}>
-            <a
-              href={`?producer-id=${producer.id}`}
-              style={{ textDecoration: "none" }}
-              onClick={() => handleProducerSearch(producer.id)}
-            >
+      <Form.Group>
+        <select
+          className="form-control"
+          onChange={(e) => handleProducerSearch(e.target.value)}
+        >
+          <option value="">Select Producer</option>
+          {producers.map((producer) => (
+            <option key={producer.id} value={producer.id}>
               {producer.Name}
-            </a>
-          </li>
-        ))}
-      </ul>
+            </option>
+          ))}
+        </select>
+      </Form.Group>
     </Col>
   );
 };
