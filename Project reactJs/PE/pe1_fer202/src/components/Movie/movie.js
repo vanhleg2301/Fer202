@@ -53,13 +53,21 @@ const Movie = () => {
   const handleProducerSearch = async (producerId) => {
     try {
       const response = await fetch(
-        `http://localhost:9999/movies?producerId=${producerId}`
+        `http://localhost:9999/movies?ProducerId=${producerId}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch movies for the producer");
       }
       const data = await response.json();
-      setFilteredProducers(data);
+      // Chuyển đổi giá trị của data sang kiểu số nguyên
+      const parsedData = data.map((item) => ({
+        ...item,
+        // Chuyển đổi giá trị producerId sang kiểu số nguyên
+        producerId: parseInt(item.producerId),
+      }));
+
+      setFilteredProducers(parsedData);
+      console.log(parsedData);
     } catch (error) {
       console.error("Error fetching movies for the producer:", error);
     }

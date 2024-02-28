@@ -5,12 +5,12 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 const Create = () => {
   const [formData, setFormData] = useState({
     id: "",
-    title: "",
-    releaseDate: "",
-    description: "",
-    language: "",
-    producerId: 0,
-    directorId: 0,
+    Title: "",
+    ReleaseDate: "",
+    Description: "",
+    Language: "",
+    ProducerId: 0,
+    DirectorId: 0,
   });
 
   const [movies, setMovies] = useState([]);
@@ -34,7 +34,9 @@ const Create = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    const parsedValue =
+      name === "ProducerId" || name === "DirectorId" ? parseInt(value) : value;
+    setFormData({ ...formData, [name]: parsedValue });
   };
 
   const handleSubmit = async (event) => {
@@ -55,12 +57,12 @@ const Create = () => {
       }
       setFormData({
         id: "",
-        title: "",
-        releaseDate: "",
-        description: "",
-        language: "",
-        producerId: 0,
-        directorId: 0,
+        Title: "",
+        ReleaseDate: "",
+        Description: "",
+        Language: "",
+        ProducerId: 0,
+        DirectorId: 0,
       });
       alert("Movie created successfully!");
       window.location.href = "/movie";
@@ -81,8 +83,8 @@ const Create = () => {
                 <Form.Control
                   type="text"
                   placeholder="Enter title"
-                  name="title"
-                  value={formData.title}
+                  name="Title"
+                  value={formData.Title}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -90,8 +92,8 @@ const Create = () => {
                 <Form.Label>Release Date</Form.Label>
                 <Form.Control
                   type="date"
-                  name="releaseDate"
-                  value={formData.releaseDate}
+                  name="ReleaseDate"
+                  value={formData.ReleaseDate}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -101,8 +103,8 @@ const Create = () => {
                   as="textarea"
                   rows={3}
                   placeholder="Enter description"
-                  name="description"
-                  value={formData.description}
+                  name="Description"
+                  value={formData.Description}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -111,8 +113,8 @@ const Create = () => {
                 <Form.Control
                   type="text"
                   placeholder="Enter language"
-                  name="language"
-                  value={formData.language}
+                  name="Language"
+                  value={formData.Language}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -121,8 +123,8 @@ const Create = () => {
                 <Form.Control
                   type="number"
                   placeholder="Enter producer ID"
-                  name="producerId"
-                  value={formData.producerId}
+                  name="ProducerId"
+                  value={formData.ProducerId}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -131,8 +133,8 @@ const Create = () => {
                 <Form.Control
                   type="number"
                   placeholder="Enter director ID"
-                  name="directorId"
-                  value={formData.directorId}
+                  name="DirectorId"
+                  value={formData.DirectorId}
                   onChange={handleChange}
                 />
               </Form.Group>
