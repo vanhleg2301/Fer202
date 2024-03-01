@@ -74,12 +74,24 @@ const Movie = () => {
     }
   };
 
-  const handlehandleEdit = () => {
+  const handleEdit = () => {
     alert("Edit me");
   };
 
-  const handleDelete = () => {
-    alert("Delete me");
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:9999/movies/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete movie");
+      }
+      alert("Confirm to delete");
+      // Remove the deleted star from the local state
+      setMovies(movies.filter((star) => star.id !== id));
+    } catch (error) {
+      console.error("Error deleting star", error);
+    }
   };
 
   return (
@@ -145,7 +157,6 @@ const Movie = () => {
                   <th>Producer ID</th>
                   <th>Director ID</th>
                   <th>Detail</th>
-                  <th>Edit</th>
                   <th>Delete</th>
                 </tr>
               </thead>
@@ -166,15 +177,18 @@ const Movie = () => {
                               style={{ color: "white", textDecoration: "none" }}
                               to={`/movie/${movie.id}`}
                             >
-                              View Details
+                              Detail
                             </Link>
                           </Button>
                         </td>
                         <td>
-                          <Button onClick={handlehandleEdit}>Edit</Button>
+                          <Button onClick={handleEdit}>Edit</Button>
                         </td>
                         <td>
-                          <Button variant="danger" onClick={handleDelete}>
+                          <Button
+                            variant="danger"
+                            onClick={() => handleDelete(movie.id)}
+                          >
                             Delete
                           </Button>
                         </td>
@@ -195,15 +209,16 @@ const Movie = () => {
                               style={{ color: "white", textDecoration: "none" }}
                               to={`/movie/${movie.id}`}
                             >
-                              View Details
+                              Detail
                             </Link>
                           </Button>
                         </td>
+
                         <td>
-                          <Button onClick={handlehandleEdit}>Edit</Button>
-                        </td>
-                        <td>
-                          <Button variant="danger" onClick={handleDelete}>
+                          <Button
+                            variant="danger"
+                            onClick={() => handleDelete(movie.id)}
+                          >
                             Delete
                           </Button>
                         </td>

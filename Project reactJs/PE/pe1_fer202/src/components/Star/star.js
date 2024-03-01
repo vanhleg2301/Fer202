@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Header/header";
 import { Form, Container, Row, Col, Button } from "react-bootstrap";
+import AllStar from "./AllStar";
 
 const AddStarForm = () => {
   const [starData, setStarData] = useState({
-    fullName: "",
-    gender: "",
-    dob: "",
-    description: "",
-    nationality: "",
+    FullName: "",
+    Male: "",
+    Dob: "",
+    Description: "",
+    Nationality: "",
   });
 
   const [totalStars, setTotalStars] = useState(0);
@@ -39,8 +40,12 @@ const AddStarForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const id = totalStars + 1; // Generate id based on total number of stars
-      const newStarData = { ...starData, id }; // Include id in star data
+      const id = (totalStars + 1).toString(); // Chuyển đổi id thành chuỗi
+      const newStarData = {
+        ...starData,
+        id,
+        Male: starData.Male === "true",
+      }; // Convert "Male" to true and "Female" to false
       const response = await fetch("http://localhost:9999/stars", {
         method: "POST",
         headers: {
@@ -51,17 +56,18 @@ const AddStarForm = () => {
       if (!response.ok) {
         throw new Error("Failed to add star");
       }
-      alert("Star added successfully!");
+
       // Reset form fields after successful submission
       setStarData({
-        fullName: "",
-        gender: "",
-        dob: "",
-        description: "",
-        nationality: "",
+        FullName: "",
+        Male: "",
+        Dob: "",
+        Description: "",
+        Nationality: "",
       });
       // Update totalStars to reflect the new total after adding a star
       setTotalStars(totalStars + 1);
+      alert("Star added successfully!");
     } catch (error) {
       console.error("Error adding star:", error);
       alert("Failed to add star");
@@ -71,12 +77,44 @@ const AddStarForm = () => {
   const handleReset = () => {
     // Clear form fields
     setStarData({
-      fullName: "",
-      gender: "",
-      dob: "",
-      description: "",
-      nationality: "",
+      FullName: "",
+      Male: "",
+      Dob: "",
+      Description: "",
+      Nationality: "",
     });
+  };
+
+  const handleView = (star) => {
+    setStarData({
+      FullName: star.FullName,
+      Male: star.Male.toString(),
+      Dob: star.Dob,
+      Description: star.Description,
+      Nationality: star.Nationality,
+    });
+  };
+
+  const handleUpdate = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:9999/stars/${starData.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(starData),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to update star");
+      }
+      alert("Star updated successfully!");
+    } catch (error) {
+      console.error("Error updating star:", error);
+      alert("Failed to update star");
+    }
   };
 
   return (
@@ -95,8 +133,8 @@ const AddStarForm = () => {
                 <Form.Label>Date of Birth</Form.Label>
                 <Form.Control
                   type="date"
-                  name="dob"
-                  value={starData.dob}
+                  name="Dob"
+                  value={starData.Dob}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -104,8 +142,8 @@ const AddStarForm = () => {
                 <Form.Label>Nationality</Form.Label>
                 <Form.Control
                   as="select"
-                  name="nationality"
-                  value={starData.nationality}
+                  name="Nationality"
+                  value={starData.Nationality}
                   onChange={handleChange}
                 >
                   <option value="">-- Select --</option>
@@ -120,8 +158,8 @@ const AddStarForm = () => {
                 <Form.Label>Full Name *</Form.Label>
                 <Form.Control
                   type="text"
-                  name="fullName"
-                  value={starData.fullName}
+                  name="FullName"
+                  value={starData.FullName}
                   onChange={handleChange}
                   required
                 />
@@ -129,17 +167,20 @@ const AddStarForm = () => {
               <Form.Group className="mt-4">
                 <Form.Label>Gender</Form.Label>
                 <Form.Check
+                  check
                   type="radio"
                   label="Male"
-                  name="gender"
-                  value="male"
+                  name="Male"
+                  value="true"
+                  checked={starData.Male === "true"}
                   onChange={handleChange}
                 />
                 <Form.Check
                   type="radio"
                   label="Female"
-                  name="gender"
-                  value="female"
+                  name="Male"
+                  value="false"
+                  checked={starData.Male === "false"}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -148,8 +189,8 @@ const AddStarForm = () => {
                 <Form.Control
                   as="textarea"
                   rows={1}
-                  name="description"
-                  value={starData.description}
+                  name="Description"
+                  value={starData.Description}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -158,6 +199,14 @@ const AddStarForm = () => {
           <div className="mt-4 text-center">
             <Button variant="primary" type="submit" className="mr-2">
               Add Star
+            </Button>
+            <Button
+              variant="secondary"
+              type="reset"
+              onClick={handleUpdate}
+              className="ml-2"
+            >
+              update
             </Button>
             <Button
               variant="danger"
@@ -169,6 +218,9 @@ const AddStarForm = () => {
             </Button>
           </div>
         </Form>
+      </Container>
+      <Container>
+        <AllStar handleView={handleView} />
       </Container>
     </div>
   );

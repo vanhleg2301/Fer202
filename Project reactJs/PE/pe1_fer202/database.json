@@ -260,33 +260,17 @@
     },
     {
       "id": "18",
-      "FullName": "Jamie Clayton",
+      "FullName": "Le Diem quynh",
       "Male": false,
-      "Dob": "1978-01-15",
-      "Description": "Jamie Clayton's big break was playing Kyla on season three of the hit HBO series Hung alongside Thomas Jane. After her multi-episode arc on Hung, Jamie joined actors Mary Lynn Rajskub and Hank Harris as a lead in the Emmy winning digital series, Dirty Work, playing crime scene cleanup maven Michelle.",
-      "Nationality": "USA"
-    },
-    {
-      "id": "19",
-      "FullName": "Leonardo DiCaprio",
-      "Male": true,
-      "Dob": "1974-11-11",
-      "Description": "Leonardo Wilhelm DiCaprio was born November 11, 1974 in Los Angeles, California, the only child of Irmelin DiCaprio (née Indenbirken) and former comic book artist George DiCaprio. His father is of Italian and German descent, and his mother, who is German-born, is of German and Russian ancestry. His middle name, \"Wilhelm\", was his maternal grandfather's first name.",
-      "Nationality": "USA"
-    },
-    {
-      "id": "20",
-      "FullName": "abc",
-      "Male": true,
-      "Dob": "2023-09-14",
-      "Description": "test\r\n",
-      "Nationality": "UK"
+      "Dob": "0003-10-22",
+      "Description": "Dan don ngoc nghech",
+      "Nationality": "England"
     }
   ],
   "movies": [
     {
       "id": "2",
-      "Title": "Halloween Ends",
+      "Title": "Halloween Ends gagagag",
       "ReleaseDate": "2022-10-14",
       "Description": "The saga of Michael Myers and Laurie Strode comes to a spine-chilling climax in this final installment of this trilogy.",
       "Language": "English",
@@ -355,15 +339,6 @@
       "Language": "English",
       "ProducerId": "123",
       "DirectorId": "123"
-    },
-    {
-      "id": "12",
-      "Title": "123",
-      "ReleaseDate": "2002-12-12",
-      "Description": "123",
-      "Language": "English",
-      "ProducerId": 2,
-      "DirectorId": 2
     }
   ],
   "movie_star": [

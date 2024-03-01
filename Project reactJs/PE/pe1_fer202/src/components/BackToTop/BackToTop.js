@@ -38,12 +38,12 @@ const BackToTop = () => {
         backgroundColor: "#007bff",
         color: "white",
         padding: "10px 20px",
-        borderRadius: "5px",
+        borderRadius: "100%",
         zIndex: 9999,
       }}
       onClick={scrollToTop}
     >
-      Back to Top
+      Top
     </div>
   );
 };
